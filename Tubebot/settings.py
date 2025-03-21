@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e^xsr2b6o_x)a$+38f(c$&6d)+d4fk0vodj0*baku)75=-0xy^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tubebot-lxbk.onrender.com','localhost','127.0.0.1']
 
 
 # Application definition
