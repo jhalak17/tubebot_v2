@@ -5,7 +5,6 @@ from rest_framework import status
 
 class TrendingWordsView(APIView):
     def get(self, request):
-        print("************** COMING *************")
         try:
             tr = Trends()
             trends = tr.trending_now(geo="IN")

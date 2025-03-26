@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['tubebot-lxbk.onrender.com','localhost','127.0.0.1']
 
+# FOR GOOGLE LOGIN
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',  
+]
+
 
 # Application definition
 
@@ -39,6 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Apps',
     'rest_framework',
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'Tubebot.urls'
@@ -127,3 +138,25 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# FOR GOOGLE LOGIN
+
+SITE_ID = 1
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '765175784583-h2up4ga9tav1kjh8efvunpmegnftu3f0.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+    }
+}
+
+SOCIALACCOUNT_LOGIN_ON_GET=True
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
